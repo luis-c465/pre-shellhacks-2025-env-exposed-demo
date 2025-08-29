@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Environment Exposed Example</title>
+  </head>
+  <body class="flex items-center justify-center min-h-screen p-4">
+    <h1>Environment Exposed Example</h1>
+
+    <div
+      class="flex flex-col w-full max-w-lg h-[90vh] bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border border-gray-800"
+    >
+      <!-- Header -->
+      <div
+        class="flex items-center justify-between p-4 bg-gray-800 text-white shadow-lg rounded-t-3xl"
+      >
+        <h1 class="text-xl font-bold">Gemini Chat</h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-6 h-6 text-yellow-400"
+        >
+          <path
+            d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 4a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm-2 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-2-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
+          />
+        </svg>
+      </div>
+
+      <!-- Chat messages container -->
+      <div
+        id="chat-container"
+        class="flex-1 p-4 overflow-y-auto scrollbar-hide space-y-4 bg-gray-900"
+      >
+        <!-- Initial bot message -->
+        <div class="flex justify-start">
+          <div
+            class="bg-gray-700 text-gray-200 p-3 rounded-tr-2xl rounded-b-2xl max-w-[80%] shadow-md animate-fade-in-up"
+          >
+            Hello! I am a simple chatbot powered by the Gemini API. How can I
+            assist you today?
+          </div>
+        </div>
+        <!-- Messages will be dynamically added here -->
+      </div>
+
+      <!-- User input area -->
+      <div class="flex p-4 bg-gray-800 rounded-b-3xl border-t border-gray-700">
+        <input
+          type="text"
+          id="user-input"
+          class="flex-1 p-3 border-2 border-gray-600 rounded-2xl focus:outline-none focus:border-gray-500 transition-colors bg-gray-700 text-white placeholder-gray-400"
+          placeholder="Type your message..."
+        />
+        <button
+          id="send-button"
+          class="ml-2 px-6 py-3 bg-gray-600 text-white rounded-2xl font-semibold shadow-lg hover:bg-gray-500 transition-colors flex items-center justify-center"
+        >
+          <svg
+            id="send-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              d="M3.478 2.405a.75.75 0 0 0-.926.94l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.405Z"
+            />
+          </svg>
+          <svg
+            id="loading-spinner"
+            class="animate-spin h-6 w-6 text-white hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="./script.ts"></script>
+  </body>
+</html>
