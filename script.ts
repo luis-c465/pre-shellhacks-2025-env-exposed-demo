@@ -9,10 +9,6 @@ const loadingSpinner = document.getElementById(
 ) as HTMLDivElement
 const sendIcon = document.getElementById('send-icon') as HTMLDivElement
 
-// Set up API key and URL
-const apiKey = 'AIzaSyAXbMwSXzx2sAlvY8UD78FLlnor_KBE2Mc'
-const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`
-
 // Attach event listeners to the send button and input field
 sendButton.addEventListener('click', sendMessage)
 userInput.addEventListener('keydown', (event) => {
@@ -60,7 +56,7 @@ async function callGeminiApiWithRetry(
 ) {
   for (let i = 0; i < retries; i++) {
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
