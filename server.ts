@@ -1,8 +1,9 @@
+import 'dotenv/config'
 import { serve } from 'bun'
 import index from './index.html'
 import './styles.css'
 
-const apiKey = 'AIzaSyAXbMwSXzx2sAlvY8UD78FLlnor_KBE2Mc'
+const apiKey = process.env.API_KEY ?? ''
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
 console.log('API_KEY:', apiKey)
 
