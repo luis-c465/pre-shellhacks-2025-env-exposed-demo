@@ -6,8 +6,12 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   web:
     restart: 'on-failure'
@@ -18,7 +22,5 @@ services:
       - DB_HOST=db
       - API_KEY=${API_KEY:-''}
     depends_on:
-      - db
-
-volumes:
-  postgres_data:
+      db:
+        condition: service_healthy
